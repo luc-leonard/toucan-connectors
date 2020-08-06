@@ -202,8 +202,11 @@ class ToucanConnector(BaseModel, metaclass=ABCMeta):
             cls.logger = logging.getLogger(cls.__name__)
         except KeyError as e:
             raise TypeError(f'{cls.__name__} has no {e} attribute.')
-        if 'bearer_integration' in cls.__fields__:
-            cls.bearer_integration = cls.__fields__['bearer_integration'].default
+        # if 'bearer_integration' in cls.__fields__:
+        #     cls.bearer_integration = cls.__fields__['bearer_integration'].default
+        if 'auth_flow' in cls.__fields__:
+            cls.auth_flow = cls.__fields__['auth_flow'].default
+            print(cls.auth_flow)
 
     def bearer_oauth_get_endpoint(
         self, endpoint: str, query: Optional[dict] = None,

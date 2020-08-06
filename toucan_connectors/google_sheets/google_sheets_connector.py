@@ -40,8 +40,8 @@ class GoogleSheetsConnector(ToucanConnector):
     """
 
     data_source_model: GoogleSheetsDataSource
-    bearer_integration = 'google_sheets'
-    bearer_auth_id: str
+    auth_flow = 'oauth2'
+    access_token: str
 
     def _retrieve_data(self, data_source: GoogleSheetsDataSource) -> pd.DataFrame:
         if data_source.sheet is None:
